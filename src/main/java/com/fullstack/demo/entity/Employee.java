@@ -44,9 +44,9 @@ public class Employee {
 	@Column(name = "created_date")
 	@CreatedDate
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdDate;
+	private Date createdDate=new Date();
 	@Column(name = "lastupdated_date")
 	@LastModifiedDate
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date updatedDate;
+	private Date updatedDate=new Date();
 }
