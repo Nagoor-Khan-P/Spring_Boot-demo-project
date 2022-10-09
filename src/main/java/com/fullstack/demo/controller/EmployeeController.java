@@ -37,6 +37,9 @@ public class EmployeeController {
 	
 	@GetMapping
 	public List<EmployeeResponseDTO> findAllEmployees(){
-		return null;
+		List<Employee> employees = employeeService.getAllEmployees();
+		List<EmployeeResponseDTO> employeeResponseDTOs = (List<EmployeeResponseDTO>) mapper.map(employees, EmployeeResponseDTO.class);
+		
+		return employeeResponseDTOs;
 	}
 }
