@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fullstack.demo.entity.Employee;
+import com.fullstack.demo.exception.EmployeeNotFoundException;
 import com.fullstack.demo.repository.EmployeeRepository;
 
 @Service
@@ -32,13 +33,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Transactional
 	@Override
-	public Employee findById(long employeeId) {
+	public Employee findById(long employeeId)throws EmployeeNotFoundException {
 		// TODO Auto-generated method stub
 		Optional<Employee> employee=employeeRepository.findById(employeeId);
 		if(employee.isPresent()) {
 			return employee.get();
 		}
-		return employee.get();
+	 throw new EmployeeNotFoundException(employeeId);
 	}
 	
 //	@Transactional
