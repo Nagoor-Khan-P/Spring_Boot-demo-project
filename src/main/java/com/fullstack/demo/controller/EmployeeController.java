@@ -1,6 +1,7 @@
 package com.fullstack.demo.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +44,10 @@ public class EmployeeController {
 		return employeeResponseDTO;
 	}
 	
-	@GetMapping
+	@GetMapping("/getAll")
 	public List<EmployeeResponseDTO> findAllEmployees(){
 		List<Employee> employees = employeeService.getAllEmployees();
-		List<EmployeeResponseDTO> employeeResponseDTOs = (List<EmployeeResponseDTO>) mapper.map(employees, EmployeeResponseDTO.class);
+		List<EmployeeResponseDTO> employeeResponseDTOs = employees.stream().map(employee -> mapper.map(employee, EmployeeResponseDTO.class)).collect(Collectors.toList());
 		
 		return employeeResponseDTOs;
 	}
