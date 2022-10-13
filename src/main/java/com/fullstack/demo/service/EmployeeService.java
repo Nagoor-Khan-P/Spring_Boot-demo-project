@@ -7,8 +7,8 @@ import com.fullstack.demo.entity.Employee;
 
 public interface EmployeeService {
 	public Employee saveEmployee(Employee emp);
-	public Optional<Employee> findById(long employeeId);
+	public Employee findById(long employeeId);
 	public List<Employee> getAllEmployees();
-	public List<Employee> getAllEmployeeStartsWith(String name);
-	public List<Employee> getAllEmployeesLastNamesLike(String lastName);
+//	public List<Employee> getAllEmployeeStartsWith(String name);
+//	public List<Employee> getAllEmployeesLastNamesLike(String lastName);
 }

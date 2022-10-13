@@ -29,23 +29,30 @@ public class EmployeeServiceImpl implements EmployeeService {
 		// TODO Auto-generated method stub
 		return employeeRepository.findAll();
 	}
-
+	
+	@Transactional
 	@Override
-	public Optional<Employee> findById(long employeeId) {
+	public Employee findById(long employeeId) {
 		// TODO Auto-generated method stub
-		return employeeRepository.findById(employeeId);
+		Optional<Employee> employee=employeeRepository.findById(employeeId);
+		if(employee.isPresent()) {
+			return employee.get();
+		}
+		return employee.get();
 	}
-
-	@Override
-	public List<Employee> getAllEmployeeStartsWith(String name) {
-		// TODO Auto-generated method stub
-		return employeeRepository.getAllEmployeeStartsWith(name);
-	}
-
-	@Override
-	public List<Employee> getAllEmployeesLastNamesLike(String lastName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+//	@Transactional
+//	@Override
+//	public List<Employee> getAllEmployeeStartsWith(String name) {
+//		// TODO Auto-generated method stub
+//		return employeeRepository.getAllEmployeeStartsWith(name);
+//	}
+//	
+//	@Transactional
+//	@Override
+//	public List<Employee> getAllEmployeesLastNamesLike(String lastName) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

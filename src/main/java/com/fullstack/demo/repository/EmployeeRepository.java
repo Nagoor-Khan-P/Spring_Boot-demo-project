@@ -12,9 +12,9 @@ import com.fullstack.demo.entity.Employee;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 	
-	@Query(value = "select e from Employee e where e.firstName like :name%")
-	List<Employee> getAllEmployeeStartsWith(@Param("name") String name);
-	
-	@Query(value = "select e from Employee e where e.lastName like %:name%")
-	List<Employee> getAllEmployeesLastNamesLike(String lastName);
+//	@Query(value = "select e from Employee e where e.firstName like :name%")
+//	List<Employee> getAllEmployeeStartsWith(@Param("name") String name);
+//	
+//	@Query(value = "select e from Employee e where e.lastName like %:name%")
+//	List<Employee> getAllEmployeesLastNamesLike(String lastName);
 }

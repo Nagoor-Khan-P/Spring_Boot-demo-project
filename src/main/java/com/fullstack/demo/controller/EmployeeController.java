@@ -5,6 +5,7 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,13 @@ public class EmployeeController {
 		Employee emp=mapper.map(emploDto, Employee.class);
 		Employee employee = employeeService.saveEmployee(emp);
 		EmployeeResponseDTO employeeResponseDTO=mapper.map(employee, EmployeeResponseDTO.class);
+		return employeeResponseDTO;
+	}
+	
+	@GetMapping("/{eid}")
+	public EmployeeResponseDTO findEmployeeById(@PathVariable long eid) {
+		Employee emp=employeeService.findById(eid);
+		EmployeeResponseDTO employeeResponseDTO=mapper.map(emp, EmployeeResponseDTO.class);
 		return employeeResponseDTO;
 	}
 	
